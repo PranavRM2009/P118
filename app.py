@@ -1,5 +1,5 @@
 from flask import Flask , render_template , request , jsonify
-from prediction import predict
+import prediction
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def predict():
 
 
 # Creating an API to save the review, user clicks on the Save button
-@app.route('/save_entry' , methods = ['POST'])
+@app.route('/save' , methods = ['POST'])
 def save():
 
     # extracting date , product name , review , sentiment associated from the JSOn data
@@ -43,9 +43,11 @@ def save():
     data_entry = date + "," + product + "," + review + "," + sentiment
 
     # open the file in the 'append' mode
-    file_handler=open("./static/assets/datafiles/updated_product_dataset.csv","a")
+    f = open('./static/assets/datafiles/data_entry.csv' , 'a')
+
     # Log the data in the file
-    file_handler.write(data_entry + '\n')
+    f.write(data_entry + '\n')
+
     # return a success message
     return jsonify({'status' : 'success' , 
                     'message' : 'Data Logged'})

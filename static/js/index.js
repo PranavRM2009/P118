@@ -99,7 +99,7 @@ $(document).ready(function(){
     //  check if Submit button under 'camera' is clicked and get the review accordingly
     $('#c_button').click(function(){
 
-        review = $('').val()
+        review = $('#c_textbox').val()
         input_data = {'customer_review' : review}
         ajax_request('/predict' , input_data)
 
@@ -109,7 +109,7 @@ $(document).ready(function(){
     //  check if Submit button under 'headphones' is clicked and get the review accordingly
     $('#h_button').click(function(){
 
-        review = $('').val()
+        review = $('#h_textbox').val()
         input_data = {'customer_review' : review}
         ajax_request('/predict' , input_data)
 
@@ -119,7 +119,7 @@ $(document).ready(function(){
     //  check if Submit button under 'videogame' is clicked and get the review accordingly
     $('#v_button').click(function(){
 
-        review = $('').val()
+        review = $('#v_textbox').val()
         input_data = {'customer_review' : review}
         ajax_request('/predict' , input_data)
 
@@ -139,7 +139,7 @@ $(document).ready(function(){
         //  ajax call
         $.ajax({
             type : 'POST',
-            url : '/predict_emoticon',
+            url : '/save',
             data : JSON.stringify(input_data),
             dataType : 'json',
             contentType : 'application/json',
